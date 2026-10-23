@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educenter - Học Thực Chiến, Dẫn Đầu Công Nghệ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#e63946',
+                            redDark: '#dc3545',
+                            redHover: '#b82535',
+                            redLight: '#ff4d5e',
+                            bg: '#0f0f12',
+                            surface: '#1a1a20',
+                            card: '#24242c',
+                            border: '#33333f',
+                            textMuted: '#9ca3af'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #0f0f12;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f0f12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e63946;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #dc3545;
+        }
+        .glow-red {
+            box-shadow: 0 0 25px rgba(230, 57, 70, 0.25);
+        }
+        .glow-red-lg {
+            box-shadow: 0 0 50px rgba(230, 57, 70, 0.35);
+        }
+        .gradient-red-text {
+            background: linear-gradient(135deg, #ffffff 0%, #ff6b7b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-gray-100 selection:bg-brand-red selection:text-white">
+
+    <!-- TOPBAR -->
+    <div class="bg-black/80 border-b border-brand-border text-xs py-2 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 text-gray-400">
+                <a href="tel:0901234567" class="hover:text-brand-red transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-phone text-brand-red"></i>
+                    <span>Hotline: <strong class="text-white">0901 234 567</strong></span>
+                </a>
+                <a href="mailto:tuyensinh@educenter.edu.vn" class="hover:text-brand-red transition-colors flex items-center gap-1.5 hidden sm:flex">
+                    <i class="fa-solid fa-envelope text-brand-red"></i>
+                    <span>tuyensinh@educenter.edu.vn</span>
+                </a>
+                <span class="hidden lg:flex items-center gap-1.5">
+                    <i class="fa-solid fa-location-dot text-brand-red"></i>
+                    <span>TP.HCM & Hà Nội</span>
+                </span>
+            </div>
+            <div class="flex items-center gap-4 text-gray-400">
+                <div class="flex items-center gap-1.5 bg-brand-surface px-2.5 py-1 rounded border border-brand-border text-white">
+                    <i class="fa-regular fa-clock text-brand-red"></i>
+                    <span id="live-clock" class="font-mono font-medium">--:--:--</span>
+                    <span class="text-[10px] bg-brand-red/20 text-brand-red px-1 rounded uppercase">VN</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="hover:text-brand-red transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-brand-red transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-brand-red transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="hover:text-brand-red transition-colors"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 z-40 bg-brand-bg/90 backdrop-blur-md border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 bg-gradient-to-br from-brand-red to-brand-redDark rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-red/30 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-black tracking-tight text-white uppercase">Edu<span class="text-brand-red">center</span></span>
+                    <span class="block text-[10px] text-gray-400 font-medium tracking-widest -mt-1 uppercase">Tech & Skill Academy</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-gray-300">
+                <a href="#courses" class="hover:text-brand-red transition-colors">Khóa Học</a>
+                <a href="#schedule" class="hover:text-brand-red transition-colors">Lịch Khai Giảng</a>
+                <a href="#pathways" class="hover:text-brand-red transition-colors">Lộ Trình</a>
+                <a href="#instructors" class="hover:text-brand-red transition-colors">Giảng Viên</a>
+                <a href="#reviews" class="hover:text-brand-red transition-colors">Đánh Giá</a>
+                <a href="#contact" class="hover:text-brand-red transition-colors">Liên Hệ</a>
+            </nav>
+
+            <!-- Header Action -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="#contact" class="px-5 py-2.5 rounded-lg bg-brand-red hover:bg-brand-redHover text-white font-semibold text-sm transition-all shadow-md shadow-brand-red/20 flex items-center gap-2">
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                    <span>Tư Vấn Miễn Phí</span>
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-300 hover:text-white p-2 focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-brand-border bg-brand-surface px-4 py-6 space-y-4">
+            <a href="#courses" class="block py-2 text-gray-200 hover:text-brand-red font-medium border-b border-gray-800">Khóa Học</a>
+            <a href="#schedule" class="block py-2 text-gray-200 hover:text-brand-red font-medium border-b border-gray-800">Lịch Khai Giảng</a>
+            <a href="#pathways" class="block py-2 text-gray-200 hover:text-brand-red font-medium border-b border-gray-800">Lộ Trình Đào Tạo</a>
+            <a href="#instructors" class="block py-2 text-gray-200 hover:text-brand-red font-medium border-b border-gray-800">Giảng Viên</a>
+            <a href="#reviews" class="block py-2 text-gray-200 hover:text-brand-red font-medium border-b border-gray-800">Học Viên Nói Gì</a>
+            <a href="#contact" class="block py-2 text-gray-200 hover:text-brand-red font-medium">Đăng Ký Tư Vấn</a>
+            <a href="#contact" class="w-full mt-4 py-3 bg-brand-red hover:bg-brand-redDark text-white text-center font-bold rounded-lg block">
+                Đăng Ký Nhận Học Bổng
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative py-20 lg:py-28 overflow-hidden bg-gradient-to-b from-brand-bg via-brand-surface to-brand-bg border-b border-brand-border">
+        <!-- Glow accents -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-red/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-brand-red/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-red/10 border border-brand-red/30 text-brand-red text-xs font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-brand-red animate-ping"></span>
+                        Tuyển sinh K28 - Giảm 35% Học Phí
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                        <span class="uppercase text-white">Educenter</span> <br/>
+                        <span class="gradient-red-text">Học Thực Chiến</span> <br/>
+                        <span class="text-white">Dẫn Đầu Công Nghệ</span>
+                    </h1>
+
+                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Hệ thống đào tạo Lập trình, Dữ liệu, AI và Thiết kế hàng đầu. Chương trình chuẩn quốc tế, giảng dạy trực tiếp bởi các Tech Lead từ các tập đoàn công nghệ lớn.
+                    </p>
+
+                    <!-- Features checklist -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto lg:mx-0 pt-2 text-sm text-gray-300">
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-circle-check text-brand-red"></i>
+                            <span>100% Thực chiến dự án thật</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-circle-check text-brand-red"></i>
+                            <span>Cam kết hỗ trợ việc làm</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-circle-check text-brand-red"></i>
+                            <span>Cấp chứng chỉ có giá trị toàn quốc</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-circle-check text-brand-red"></i>
+                            <span>Hỗ trợ Mentor 1-on-1 hàng ngày</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#courses" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-red hover:bg-brand-redHover text-white font-bold text-base shadow-lg shadow-brand-red/30 transition-all text-center flex items-center justify-center gap-2">
+                            <span>Khám Phá Khóa Học</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <a href="#schedule" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-card hover:bg-brand-border border border-brand-border text-gray-200 font-semibold text-base transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-days text-brand-red"></i>
+                            <span>Xem Lịch Khai Giảng</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Card Box -->
+                <div class="lg:col-span-5">
+                    <div class="bg-brand-card/90 backdrop-blur border border-brand-border p-6 sm:p-8 rounded-2xl glow-red relative">
+                        <div class="absolute -top-3 -right-3 bg-brand-red text-white text-xs font-black uppercase px-3 py-1 rounded-full shadow-lg">
+                            Hot Event
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Đăng Ký Nhận Tư Vấn Lộ Trình</h3>
+                        <p class="text-xs text-gray-400 mb-6">Nhận trọn bộ Tài liệu Lập trình + Voucher học bổng 2.000.000đ</p>
+
+                        <form id="hero-quick-form" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1">Họ và tên *</label>
+                                <input type="text" id="quick-name" required placeholder="Nguyễn Văn A" class="w-full px-4 py-2.5 rounded-lg bg-brand-bg border border-brand-border text-sm text-white focus:outline-none focus:border-brand-red transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1">Số điện thoại *</label>
+                                <input type="tel" id="quick-phone" required placeholder="0901234567" class="w-full px-4 py-2.5 rounded-lg bg-brand-bg border border-brand-border text-sm text-white focus:outline-none focus:border-brand-red transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1">Khóa học quan tâm</label>
+                                <select id="quick-course" class="w-full px-4 py-2.5 rounded-lg bg-brand-bg border border-brand-border text-sm text-white focus:outline-none focus:border-brand-red transition-colors">
+                                    <option value="Fullstack Web Developer">Fullstack Web Developer</option>
+                                    <option value="Python & AI Engineering">Python & AI Engineering</option>
+                                    <option value="Data Analytics Professional">Data Analytics Professional</option>
+                                    <option value="UI/UX Product Design">UI/UX Product Design</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full py-3.5 rounded-lg bg-gradient-to-r from-brand-red to-brand-redDark text-white font-bold text-sm hover:opacity-95 transition-opacity shadow-lg shadow-brand-red/30">
+                                Đăng Ký Tư Vấn Ngay
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STATS COUNTER BAR -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 bg-brand-surface p-6 sm:p-8 rounded-2xl border border-brand-border">
+                <div class="text-center border-r border-brand-border last:border-r-0">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-red mb-1">15.000+</div>
+                    <div class="text-xs sm:text-sm text-gray-400 font-medium">Học Viên Đã Tốt Nghiệp</div>
+                </div>
+                <div class="text-center border-r border-brand-border md:last:border-r-0">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-red mb-1">98%</div>
+                    <div class="text-xs sm:text-sm text-gray-400 font-medium">Có Việc Làm Sau 3 Tháng</div>
+                </div>
+                <div class="text-center border-r border-brand-border last:border-r-0">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-red mb-1">50+</div>
+                    <div class="text-xs sm:text-sm text-gray-400 font-medium">Đối Tác Doanh Nghiệp</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-red mb-1">20+</div>
+                    <div class="text-xs sm:text-sm text-gray-400 font-medium">Chương Trình Đào Tạo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSE CATALOG SECTION -->
+    <section id="courses" class="py-20 bg-brand-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Title -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-red font-bold text-xs uppercase tracking-wider">Chương Trình Đào Tạo</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Danh Sách Khóa Học Nổi Bật</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">Được thiết kế bám sát nhu cầu tuyển dụng thực tế của doanh nghiệp công nghệ hiện đại.</p>
+            </div>
+
+            <!-- Search & Filter Controls -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-10">
+                <!-- Category Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-2" id="filter-buttons">
+                    <button class="filter-btn active px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-brand-red text-white" data-category="all">Tất Cả</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-brand-surface hover:bg-brand-card text-gray-300 border border-brand-border" data-category="web">Lập Trình Web</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-brand-surface hover:bg-brand-card text-gray-300 border border-brand-border" data-category="data">Dữ Liệu & AI</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-brand-surface hover:bg-brand-card text-gray-300 border border-brand-border" data-category="design">Thiết Kế UI/UX</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-brand-surface hover:bg-brand-card text-gray-300 border border-brand-border" data-category="marketing">Digital Marketing</button>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="relative w-full md:w-72">
+                    <input type="text" id="course-search" placeholder="Tìm khóa học..." class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-brand-surface border border-brand-border text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-red transition-colors">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-500 text-sm"></i>
+                </div>
+            </div>
+
+            <!-- Courses Grid -->
+            <div id="courses-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course Card 1 -->
+                <div class="course-card bg-brand-card rounded-2xl border border-brand-border overflow-hidden flex flex-col transition-all hover:-translate-y-1 hover:border-brand-red/50" data-category="web" data-title="Lập Trình Fullstack Web Developer">
+                    <div class="relative h-48 bg-gray-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Fullstack Web" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a1a20/ffffff?text=Fullstack+Web'">
+                        <span class="absolute top-3 left-3 bg-brand-red text-white text-xs font-bold px-2.5 py-1 rounded">HOT</span>
+                        <span class="absolute bottom-3 right-3 bg-black/70 backdrop-blur text-xs font-semibold px-2.5 py-1 rounded text-gray-200">6 Tháng</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-red uppercase tracking-wide">Lập Trình</span>
+                            <h3 class="text-xl font-bold text-white mt-1 hover:text-brand-red transition-colors">Lập Trình Fullstack Web Developer</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Nắm vững HTML/CSS, JavaScript ES6+, ReactJS, Node.js, Express & MongoDB. Xây dựng sản phẩm thực tế.</p>
+                        </div>
+                        <div class="space-y-3 pt-2 border-t border-brand-border">
+                            <div class="flex justify-between items-center text-xs text-gray-300">
+                                <span><i class="fa-solid fa-clock text-brand-red mr-1.5"></i> 144 Giờ học</span>
+                                <span><i class="fa-solid fa-user-group text-brand-red mr-1.5"></i> Còn 4 chỗ</span>
+                            </div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-2xl font-black text-brand-red">14.500.000đ</span>
+                                <span class="text-xs text-gray-500 line-through">19.000.000đ</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                <button onclick="openCourseModal('fullstack')" class="py-2.5 px-3 rounded-lg border border-brand-border bg-brand-surface text-xs font-bold text-gray-200 hover:bg-brand-border transition-colors">
+                                    Xem Chi Tiết
+                                </button>
+                                <a href="#contact" onclick="selectCourseForRegister('Fullstack Web Developer')" class="py-2.5 px-3 rounded-lg bg-brand-red hover:bg-brand-redDark text-xs font-bold text-white text-center transition-colors">
+                                    Đăng Ký
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="course-card bg-brand-card rounded-2xl border border-brand-border overflow-hidden flex flex-col transition-all hover:-translate-y-1 hover:border-brand-red/50" data-category="data" data-title="Python & AI Engineering">
+                    <div class="relative h-48 bg-gray-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Python AI" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a1a20/ffffff?text=Python+AI'">
+                        <span class="absolute top-3 left-3 bg-brand-red text-white text-xs font-bold px-2.5 py-1 rounded">BEST SELLER</span>
+                        <span class="absolute bottom-3 right-3 bg-black/70 backdrop-blur text-xs font-semibold px-2.5 py-1 rounded text-gray-200">5 Tháng</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-red uppercase tracking-wide">Dữ Liệu & AI</span>
+                            <h3 class="text-xl font-bold text-white mt-1 hover:text-brand-red transition-colors">Python & AI Engineering</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Lập trình Python từ cơ bản đến nâng cao, Machine Learning, Deep Learning, tích hợp OpenAI API & LLMs.</p>
+                        </div>
+                        <div class="space-y-3 pt-2 border-t border-brand-border">
+                            <div class="flex justify-between items-center text-xs text-gray-300">
+                                <span><i class="fa-solid fa-clock text-brand-red mr-1.5"></i> 120 Giờ học</span>
+                                <span><i class="fa-solid fa-user-group text-brand-red mr-1.5"></i> Còn 2 chỗ</span>
+                            </div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-2xl font-black text-brand-red">15.900.000đ</span>
+                                <span class="text-xs text-gray-500 line-through">21.000.000đ</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                <button onclick="openCourseModal('python')" class="py-2.5 px-3 rounded-lg border border-brand-border bg-brand-surface text-xs font-bold text-gray-200 hover:bg-brand-border transition-colors">
+                                    Xem Chi Tiết
+                                </button>
+                                <a href="#contact" onclick="selectCourseForRegister('Python & AI Engineering')" class="py-2.5 px-3 rounded-lg bg-brand-red hover:bg-brand-redDark text-xs font-bold text-white text-center transition-colors">
+                                    Đăng Ký
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="course-card bg-brand-card rounded-2xl border border-brand-border overflow-hidden flex flex-col transition-all hover:-translate-y-1 hover:border-brand-red/50" data-category="data" data-title="Data Analytics Professional">
+                    <div class="relative h-48 bg-gray-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Data Analytics" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a1a20/ffffff?text=Data+Analytics'">
+                        <span class="absolute bottom-3 right-3 bg-black/70 backdrop-blur text-xs font-semibold px-2.5 py-1 rounded text-gray-200">4 Tháng</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-red uppercase tracking-wide">Dữ Liệu & AI</span>
+                            <h3 class="text-xl font-bold text-white mt-1 hover:text-brand-red transition-colors">Data Analytics Professional</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Phân tích dữ liệu kinh doanh với SQL, Power BI, Python Pandas, Tableau. Trở thành Chuyên viên Data Analyst.</p>
+                        </div>
+                        <div class="space-y-3 pt-2 border-t border-brand-border">
+                            <div class="flex justify-between items-center text-xs text-gray-300">
+                                <span><i class="fa-solid fa-clock text-brand-red mr-1.5"></i> 96 Giờ học</span>
+                                <span><i class="fa-solid fa-user-group text-brand-red mr-1.5"></i> Còn 5 chỗ</span>
+                            </div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-2xl font-black text-brand-red">12.000.000đ</span>
+                                <span class="text-xs text-gray-500 line-through">16.000.000đ</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                <button onclick="openCourseModal('data')" class="py-2.5 px-3 rounded-lg border border-brand-border bg-brand-surface text-xs font-bold text-gray-200 hover:bg-brand-border transition-colors">
+                                    Xem Chi Tiết
+                                </button>
+                                <a href="#contact" onclick="selectCourseForRegister('Data Analytics Professional')" class="py-2.5 px-3 rounded-lg bg-brand-red hover:bg-brand-redDark text-xs font-bold text-white text-center transition-colors">
+                                    Đăng Ký
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 4 -->
+                <div class="course-card bg-brand-card rounded-2xl border border-brand-border overflow-hidden flex flex-col transition-all hover:-translate-y-1 hover:border-brand-red/50" data-category="design" data-title="UI/UX Product Design Pro">
+                    <div class="relative h-48 bg-gray-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=800&q=80" alt="UI UX Design" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a1a20/ffffff?text=UI+UX+Design'">
+                        <span class="absolute bottom-3 right-3 bg-black/70 backdrop-blur text-xs font-semibold px-2.5 py-1 rounded text-gray-200">3.5 Tháng</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-red uppercase tracking-wide">Thiết Kế</span>
+                            <h3 class="text-xl font-bold text-white mt-1 hover:text-brand-red transition-colors">UI/UX Product Design Pro</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Nghiên cứu người dùng (User Research), Wireframing, Figma Prototyping, Design System chuẩn quốc tế.</p>
+                        </div>
+                        <div class="space-y-3 pt-2 border-t border-brand-border">
+                            <div class="flex justify-between items-center text-xs text-gray-300">
+                                <span><i class="fa-solid fa-clock text-brand-red mr-1.5"></i> 84 Giờ học</span>
+                                <span><i class="fa-solid fa-user-group text-brand-red mr-1.5"></i> Còn 3 chỗ</span>
+                            </div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-2xl font-black text-brand-red">10.500.000đ</span>
+                                <span class="text-xs text-gray-500 line-through">14.000.000đ</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                <button onclick="openCourseModal('uiux')" class="py-2.5 px-3 rounded-lg border border-brand-border bg-brand-surface text-xs font-bold text-gray-200 hover:bg-brand-border transition-colors">
+                                    Xem Chi Tiết
+                                </button>
+                                <a href="#contact" onclick="selectCourseForRegister('UI/UX Product Design Pro')" class="py-2.5 px-3 rounded-lg bg-brand-red hover:bg-brand-redDark text-xs font-bold text-white text-center transition-colors">
+                                    Đăng Ký
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 5 -->
+                <div class="course-card bg-brand-card rounded-2xl border border-brand-border overflow-hidden flex flex-col transition-all hover:-translate-y-1 hover:border-brand-red/50" data-category="web" data-title="Lập Trình Di Động Flutter & React Native">
+                    <div class="relative h-48 bg-gray-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80" alt="Mobile App" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a1a20/ffffff?text=Mobile+App'">
+                        <span class="absolute bottom-3 right-3 bg-black/70 backdrop-blur text-xs font-semibold px-2.5 py-1 rounded text-gray-200">4.5 Tháng</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-red uppercase tracking-wide">Lập Trình</span>
+                            <h3 class="text-xl font-bold text-white mt-1 hover:text-brand-red transition-colors">Mobile App Flutter & React Native</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Xây dựng ứng dụng đa nền tảng iOS & Android chuyên nghiệp. Xuất bản ứng dụng lên App Store & Google Play.</p>
+                        </div>
+                        <div class="space-y-3 pt-2 border-t border-brand-border">
+                            <div class="flex justify-between items-center text-xs text-gray-300">
+                                <span><i class="fa-solid fa-clock text-brand-red mr-1.5"></i> 110 Giờ học</span>
+                                <span><i class="fa-solid fa-user-group text-brand-red mr-1.5"></i> Còn 6 chỗ</span>
+                            </div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-2xl font-black text-brand-red">13.500.000đ</span>
+                                <span class="text-xs text-gray-500 line-through">18.000.000đ</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                <button onclick="openCourseModal('mobile')" class="py-2.5 px-3 rounded-lg border border-brand-border bg-brand-surface text-xs font-bold text-gray-200 hover:bg-brand-border transition-colors">
+                                    Xem Chi Tiết
+                                </button>
+                                <a href="#contact" onclick="selectCourseForRegister('Mobile App Flutter & React Native')" class="py-2.5 px-3 rounded-lg bg-brand-red hover:bg-brand-redDark text-xs font-bold text-white text-center transition-colors">
+                                    Đăng Ký
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 6 -->
+                <div class="course-card bg-brand-card rounded-2xl border border-brand-border overflow-hidden flex flex-col transition-all hover:-translate-y-1 hover:border-brand-red/50" data-category="marketing" data-title="Digital Marketing & Growth Hacking">
+                    <div class="relative h-48 bg-gray-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Digital Marketing" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a1a20/ffffff?text=Digital+Marketing'">
+                        <span class="absolute bottom-3 right-3 bg-black/70 backdrop-blur text-xs font-semibold px-2.5 py-1 rounded text-gray-200">3 Tháng</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-red uppercase tracking-wide">Marketing</span>
+                            <h3 class="text-xl font-bold text-white mt-1 hover:text-brand-red transition-colors">Digital Marketing & Growth</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Lên chiến dịch Ads Facebook, Google, TikTok, SEO Chuyên sâu, Content Marketing & Performance Marketing.</p>
+                        </div>
+                        <div class="space-y-3 pt-2 border-t border-brand-border">
+                            <div class="flex justify-between items-center text-xs text-gray-300">
+                                <span><i class="fa-solid fa-clock text-brand-red mr-1.5"></i> 72 Giờ học</span>
+                                <span><i class="fa-solid fa-user-group text-brand-red mr-1.5"></i> Còn 2 chỗ</span>
+                            </div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-2xl font-black text-brand-red">9.800.000đ</span>
+                                <span class="text-xs text-gray-500 line-through">13.500.000đ</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                <button onclick="openCourseModal('marketing')" class="py-2.5 px-3 rounded-lg border border-brand-border bg-brand-surface text-xs font-bold text-gray-200 hover:bg-brand-border transition-colors">
+                                    Xem Chi Tiết
+                                </button>
+                                <a href="#contact" onclick="selectCourseForRegister('Digital Marketing & Growth')" class="py-2.5 px-3 rounded-lg bg-brand-red hover:bg-brand-redDark text-xs font-bold text-white text-center transition-colors">
+                                    Đăng Ký
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLASS SCHEDULE SECTION -->
+    <section id="schedule" class="py-20 bg-brand-surface border-y border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-red font-bold text-xs uppercase tracking-wider">Cập Nhật Mới Nhất</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Lịch Khai Giảng Tháng Này</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">Lớp học giới hạn 15-20 học viên/lớp để đảm bảo chất lượng tương tác 1-on-1.</p>
+            </div>
+
+            <!-- Schedule Table Container -->
+            <div class="overflow-x-auto rounded-2xl border border-brand-border bg-brand-card shadow-xl">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-black/60 border-b border-brand-border text-xs uppercase tracking-wider text-gray-400">
+                            <th class="py-4 px-6 font-bold">Khóa Học</th>
+                            <th class="py-4 px-6 font-bold">Ngày Khai Giảng</th>
+                            <th class="py-4 px-6 font-bold">Lịch Học</th>
+                            <th class="py-4 px-6 font-bold">Hình Thức</th>
+                            <th class="py-4 px-6 font-bold">Tình Trạng</th>
+                            <th class="py-4 px-6 font-bold text-right">Hành Động</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-brand-border text-sm text-gray-200">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-brand-surface/50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-white flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-brand-red"></span>
+                                Fullstack Web Developer (K28)
+                            </td>
+                            <td class="py-4 px-6 text-brand-red font-medium">15/11/2026</td>
+                            <td class="py-4 px-6">Thứ 2 - 4 - 6 (18:30 - 21:00)</td>
+                            <td class="py-4 px-6"><span class="px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 text-xs font-semibold">Offline HCM</span></td>
+                            <td class="py-4 px-6"><span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 text-xs font-semibold">Còn 3 chỗ</span></td>
+                            <td class="py-4 px-6 text-right">
+                                <a href="#contact" onclick="selectCourseForRegister('Fullstack Web Developer (K28)')" class="inline-block px-4 py-1.5 rounded-lg bg-brand-red hover:bg-brand-redDark text-xs font-bold text-white transition-colors">Giữ Chỗ</a>
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-brand-surface/50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-white flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-brand-red"></span>
+                                Python & AI Engineering (K19)
+                            </td>
+                            <td class="py-4 px-6 text-brand-red font-medium">20/11/2026</td>
+                            <td class="py-4 px-6">Thứ 3 - 5 - 7 (19:00 - 21:30)</td>
+                            <td class="py-4 px-6"><span class="px-2.5 py-1 rounded bg-purple-500/10 text-purple-400 text-xs font-semibold">Online Live</span></td>
+                            <td class="py-4 px-6"><span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 text-xs font-semibold">Còn 2 chỗ</span></td>
+                            <td class="py-4 px-6 text-right">
+                                <a href="#contact" onclick="selectCourseForRegister('Python & AI Engineering (K19)')" class="inline-block px-4 py-1.5 rounded-lg bg-brand-red hover:bg-brand-redDark text-xs font-bold text-white transition-colors">Giữ Chỗ</a>
+                            </td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-brand-surface/50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-white flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-gray-500"></span>
+                                Data Analytics Professional (K14)
+                            </td>
+                            <td class="py-4 px-6 text-brand-red font-medium">25/11/2026</td>
+                            <td class="py-4 px-6">Thứ 2 - 4 - 6 (18:30 - 21:00)</td>
+                            <td class="py-4 px-6"><span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-semibold">Offline Hà Nội</span></td>
+                            <td class="py-4 px-6"><span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 text-xs font-semibold">Còn 5 chỗ</span></td>
+                            <td class="py-4 px-6 text-right">
+                                <a href="#contact" onclick="selectCourseForRegister('Data Analytics Professional (K14)')" class="inline-block px-4 py-1.5 rounded-lg bg-brand-red hover:bg-brand-redDark text-xs font-bold text-white transition-colors">Giữ Chỗ</a>
+                            </td>
+                        </tr>
+                        <!-- Row 4 -->
+                        <tr class="hover:bg-brand-surface/50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-white flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-gray-500"></span>
+                                UI/UX Product Design (K12)
+                            </td>
+                            <td class="py-4 px-6 text-brand-red font-medium">01/12/2026</td>
+                            <td class="py-4 px-6">Thứ 7 - Chủ Nhật (09:00 - 12:00)</td>
+                            <td class="py-4 px-6"><span class="px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 text-xs font-semibold">Offline HCM</span></td>
+                            <td class="py-4 px-6"><span class="px-2.5 py-1 rounded bg-red-500/10 text-red-400 text-xs font-semibold">Lớp đã đầy</span></td>
+                            <td class="py-4 px-6 text-right">
+                                <button disabled class="px-4 py-1.5 rounded-lg bg-gray-700 text-xs font-bold text-gray-400 cursor-not-allowed">Đã Đầy</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEARNING PATHWAY SECTION -->
+    <section id="pathways" class="py-20 bg-brand-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-red font-bold text-xs uppercase tracking-wider">Định Hướng Sự Nghiệp</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Lộ Trình Đào Tạo Thực Chiến</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">Từ con số 0 đến khi sẵn sàng phỏng vấn thành công tại các công ty công nghệ.</p>
+            </div>
+
+            <!-- Pathway Selector Buttons -->
+            <div class="flex justify-center gap-3 mb-12">
+                <button onclick="switchPathway('path-fullstack')" id="btn-path-fullstack" class="pathway-btn active px-5 py-3 rounded-xl text-sm font-bold bg-brand-red text-white transition-all shadow-md">
+                    Fullstack Developer
+                </button>
+                <button onclick="switchPathway('path-data')" id="btn-path-data" class="pathway-btn px-5 py-3 rounded-xl text-sm font-bold bg-brand-surface text-gray-300 border border-brand-border hover:bg-brand-card transition-all">
+                    Data Analyst
+                </button>
+                <button onclick="switchPathway('path-uiux')" id="btn-path-uiux" class="pathway-btn px-5 py-3 rounded-xl text-sm font-bold bg-brand-surface text-gray-300 border border-brand-border hover:bg-brand-card transition-all">
+                    UI/UX Designer
+                </button>
+            </div>
+
+            <!-- Pathway Content Containers -->
+            <div id="path-fullstack" class="pathway-content grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
+                    <span class="w-8 h-8 rounded-full bg-brand-red text-white font-black flex items-center justify-center text-sm mb-4">1</span>
+                    <h4 class="text-lg font-bold text-white mb-2">Nền Tảng Web</h4>
+                    <p class="text-xs text-gray-400">HTML5, CSS3, Tailwind CSS, JavaScript ES6+, Git & Github điều khiển phiên bản.</p>
+                </div>
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
+                    <span class="w-8 h-8 rounded-full bg-brand-red text-white font-black flex items-center justify-center text-sm mb-4">2</span>
+                    <h4 class="text-lg font-bold text-white mb-2">Frontend React</h4>
+                    <p class="text-xs text-gray-400">ReactJS, Redux Toolkit, React Query, RESTful API integration, UI Frameworks.</p>
+                </div>
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
+                    <span class="w-8 h-8 rounded-full bg-brand-red text-white font-black flex items-center justify-center text-sm mb-4">3</span>
+                    <h4 class="text-lg font-bold text-white mb-2">Backend Node.js</h4>
+                    <p class="text-xs text-gray-400">Node.js, Express.js, MongoDB / PostgreSQL, JWT Authentication, System Design.</p>
+                </div>
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-red/60 relative glow-red">
+                    <span class="w-8 h-8 rounded-full bg-brand-red text-white font-black flex items-center justify-center text-sm mb-4">4</span>
+                    <h4 class="text-lg font-bold text-white mb-2">Đồ Án & Phỏng Vấn</h4>
+                    <p class="text-xs text-gray-400">Thực hiện dự án Fullstack hoàn chỉnh, luyện phỏng vấn CV, Mentor hỗ trợ tuyển dụng.</p>
+                </div>
+            </div>
+
+            <div id="path-data" class="pathway-content hidden grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
+                    <span class="w-8 h-8 rounded-full bg-brand-red text-white font-black flex items-center justify-center text-sm mb-4">1</span>
+                    <h4 class="text-lg font-bold text-white mb-2">SQL & Database</h4>
+                    <p class="text-xs text-gray-400">Truy vấn dữ liệu từ cơ bản đến nâng cao: JOINs, Subqueries, Aggregations, Window Functions.</p>
+                </div>
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
+                    <span class="w-8 h-8 rounded-full bg-brand-red text-white font-black flex items-center justify-center text-sm mb-4">2</span>
+                    <h4 class="text-lg font-bold text-white mb-2">Excel & Power BI</h4>
+                    <p class="text-xs text-gray-400">Xử lý dữ liệu Excel nâng cao, xây dựng Dashboard trực quan sinh động trên Power BI.</p>
+                </div>
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
+                    <span class="w-8 h-8 rounded-full bg-brand-red text-white font-black flex items-center justify-center text-sm mb-4">3</span>
+                    <h4 class="text-lg font-bold text-white mb-2">Python Data Analysis</h4>
+                    <p class="text-xs text-gray-400">Sử dụng Pandas, NumPy, Matplotlib & Seaborn để phân tích xu hướng kinh doanh.</p>
+                </div>
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-red/60 relative glow-red">
+                    <span class="w-8 h-8 rounded-full bg-brand-red text-white font-black flex items-center justify-center text-sm mb-4">4</span>
+                    <h4 class="text-lg font-bold text-white mb-2">Capstone Project</h4>
+                    <p class="text-xs text-gray-400">Báo cáo phân tích dữ liệu doanh nghiệp thật, tối ưu Portfolio cá nhân cho nhà tuyển dụng.</p>
+                </div>
+            </div>
+
+            <div id="path-uiux" class="pathway-content hidden grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
+                    <span class="w-8 h-8 rounded-full bg-brand-red text-white font-black flex items-center justify-center text-sm mb-4">1</span>
+                    <h4 class="text-lg font-bold text-white mb-2">UX Research</h4>
+                    <p class="text-xs text-gray-400">Nghiên cứu hành vi người dùng, User Personas, Empathy Maps, Information Architecture.</p>
+                </div>
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
+                    <span class="w-8 h-8 rounded-full bg-brand-red text-white font-black flex items-center justify-center text-sm mb-4">2</span>
+                    <h4 class="text-lg font-bold text-white mb-2">UI Design Figma</h4>
+                    <p class="text-xs text-gray-400">Lý thuyết màu sắc, Typography, Layout, Wireframing, Figma Master Class.</p>
+                </div>
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
+                    <span class="w-8 h-8 rounded-full bg-brand-red text-white font-black flex items-center justify-center text-sm mb-4">3</span>
+                    <h4 class="text-lg font-bold text-white mb-2">Design Systems</h4>
+                    <p class="text-xs text-gray-400">Xây dựng Design System, Auto Layout, Components, Interactive Prototyping.</p>
+                </div>
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-red/60 relative glow-red">
+                    <span class="w-8 h-8 rounded-full bg-brand-red text-white font-black flex items-center justify-center text-sm mb-4">4</span>
+                    <h4 class="text-lg font-bold text-white mb-2">Behance Portfolio</h4>
+                    <p class="text-xs text-gray-400">Đóng gói Case Study chuyên nghiệp đăng tải Behance, kết nối doanh nghiệp tuyển dụng.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTRUCTORS SECTION -->
+    <section id="instructors" class="py-20 bg-brand-surface border-y border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-red font-bold text-xs uppercase tracking-wider">Đội Ngũ Chuyên Gia</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Giảng Viên & Mentor Tận Tâm</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">100% Giảng viên là các Senior & Tech Lead đang làm việc tại các tập đoàn lớn.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Mentor 1 -->
+                <div class="bg-brand-card rounded-2xl border border-brand-border overflow-hidden text-center p-6 group hover:border-brand-red transition-all">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Mentor" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-brand-red shadow-lg group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/1a1a20/ffffff?text=Mentor'">
+                    <h3 class="text-lg font-bold text-white mt-4">Trần Hoàng Nam</h3>
+                    <p class="text-xs text-brand-red font-semibold">Senior Tech Lead @ VNG</p>
+                    <p class="text-xs text-gray-400 mt-3">10+ năm kinh nghiệm phát triển Web & Hệ thống phân tán cho hàng triệu người dùng.</p>
+                </div>
+
+                <!-- Mentor 2 -->
+                <div class="bg-brand-card rounded-2xl border border-brand-border overflow-hidden text-center p-6 group hover:border-brand-red transition-all">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Mentor" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-brand-red shadow-lg group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/1a1a20/ffffff?text=Mentor'">
+                    <h3 class="text-lg font-bold text-white mt-4">Nguyễn Minh Đức</h3>
+                    <p class="text-xs text-brand-red font-semibold">Principal AI Engineer @ VinAI</p>
+                    <p class="text-xs text-gray-400 mt-3">Chuyên gia Machine Learning & LLMs. Tác giả nhiều công trình nghiên cứu AI quốc tế.</p>
+                </div>
+
+                <!-- Mentor 3 -->
+                <div class="bg-brand-card rounded-2xl border border-brand-border overflow-hidden text-center p-6 group hover:border-brand-red transition-all">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Mentor" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-brand-red shadow-lg group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/1a1a20/ffffff?text=Mentor'">
+                    <h3 class="text-lg font-bold text-white mt-4">Lê Thị Mai Anh</h3>
+                    <p class="text-xs text-brand-red font-semibold">Product Design Lead @ Shopee</p>
+                    <p class="text-xs text-gray-400 mt-3">8 năm thiết kế sản phẩm UI/UX cho các siêu ứng dụng Thương mại điện tử.</p>
+                </div>
+
+                <!-- Mentor 4 -->
+                <div class="bg-brand-card rounded-2xl border border-brand-border overflow-hidden text-center p-6 group hover:border-brand-red transition-all">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Mentor" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-brand-red shadow-lg group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/200x200/1a1a20/ffffff?text=Mentor'">
+                    <h3 class="text-lg font-bold text-white mt-4">Phạm Vũ Quang</h3>
+                    <p class="text-xs text-brand-red font-semibold">Data Analytics Manager @ MoMo</p>
+                    <p class="text-xs text-gray-400 mt-3">Chuyên gia xây dựng hệ thống báo cáo dữ liệu lớn cho các Fintech hàng đầu Việt Nam.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section id="reviews" class="py-20 bg-brand-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-red font-bold text-xs uppercase tracking-wider">Cảm Nhận Học Viên</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Học Viên Nói Gì Về Educenter</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">Hàng ngàn học viên đã thay đổi sự nghiệp thành công sau khi hoàn thành khóa học.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review Card 1 -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex text-amber-400 text-sm gap-1 mb-3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-gray-300 italic leading-relaxed">
+                            "Khóa học Fullstack giúp mình từ một sinh viên chưa biết gì về lập trình đã có thể tự tay làm website hoàn chỉnh. Nhờ sự hỗ trợ nhiệt tình của Mentor Educenter, mình đã đỗ vào FPT Software ngay trước khi tốt nghiệp."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-brand-border">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&q=80" class="w-10 h-10 rounded-full object-cover" alt="Student" onerror="this.src='https://placehold.co/100x100/1a1a20/ffffff?text=SV'">
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Đặng Văn Khoa</h4>
+                            <p class="text-[11px] text-brand-red font-medium">Frontend Developer @ FPT Software</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex text-amber-400 text-sm gap-1 mb-3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-gray-300 italic leading-relaxed">
+                            "Chương trình Data Analytics cực kỳ thực tế. Giáo trình dạy rất sát thực tế với các case study thực tế từ doanh nghiệp. Hiện tại mình đã chuyển ngành thành công sang làm Data Analyst."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-brand-border">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" class="w-10 h-10 rounded-full object-cover" alt="Student" onerror="this.src='https://placehold.co/100x100/1a1a20/ffffff?text=SV'">
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Nguyễn Thị Thu Hà</h4>
+                            <p class="text-[11px] text-brand-red font-medium">Data Analyst @ Techcombank</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex text-amber-400 text-sm gap-1 mb-3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-gray-300 italic leading-relaxed">
+                            "Môi trường học tập tại Educenter rất năng động và truyền cảm hứng. Mentor chỉnh sửa từng chi tiết Portfolio Figma cho mình nên lúc đi xin việc tự tin hơn rất nhiều."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-brand-border">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80" class="w-10 h-10 rounded-full object-cover" alt="Student" onerror="this.src='https://placehold.co/100x100/1a1a20/ffffff?text=SV'">
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Trần Hải Yến</h4>
+                            <p class="text-[11px] text-brand-red font-medium">UI/UX Designer @ Base.vn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONSULTATION & REGISTRATION FORM -->
+    <section id="contact" class="py-20 bg-brand-surface border-t border-brand-border relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-gradient-to-br from-brand-card to-black p-8 sm:p-12 rounded-3xl border border-brand-red/40 shadow-2xl glow-red">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="inline-block px-3 py-1 bg-brand-red/20 text-brand-red text-xs font-bold rounded-full mb-2 uppercase">Ưu Đãi Đặc Biệt</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white">Nhận Tư Vấn & Học Bổng 35%</h2>
+                    <p class="text-gray-400 text-sm mt-2">Để lại thông tin để chuyên viên tư vấn Educenter liên hệ xếp lớp & giữ suất ưu đãi tốt nhất.</p>
+                </div>
+
+                <form id="main-consultation-form" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Họ và Tên *</label>
+                            <input type="text" id="form-fullname" required placeholder="Nguyễn Văn A" class="w-full px-4 py-3 rounded-xl bg-brand-bg border border-brand-border text-sm text-white focus:outline-none focus:border-brand-red transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Số Điện Thoại *</label>
+                            <input type="tel" id="form-phone" required placeholder="0901234567" class="w-full px-4 py-3 rounded-xl bg-brand-bg border border-brand-border text-sm text-white focus:outline-none focus:border-brand-red transition-colors">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Email Liên Hệ *</label>
+                            <input type="email" id="form-email" required placeholder="example@gmail.com" class="w-full px-4 py-3 rounded-xl bg-brand-bg border border-brand-border text-sm text-white focus:outline-none focus:border-brand-red transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Khóa Học Muốn Đăng Ký</label>
+                            <select id="form-course-select" class="w-full px-4 py-3 rounded-xl bg-brand-bg border border-brand-border text-sm text-white focus:outline-none focus:border-brand-red transition-colors">
+                                <option value="Fullstack Web Developer">Fullstack Web Developer</option>
+                                <option value="Python & AI Engineering">Python & AI Engineering</option>
+                                <option value="Data Analytics Professional">Data Analytics Professional</option>
+                                <option value="UI/UX Product Design Pro">UI/UX Product Design Pro</option>
+                                <option value="Mobile App Flutter & React Native">Mobile App Flutter & React Native</option>
+                                <option value="Digital Marketing & Growth">Digital Marketing & Growth</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Cơ Sở Học Thuận Tiện</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <label class="flex items-center gap-2 p-3 rounded-xl bg-brand-bg border border-brand-border cursor-pointer hover:border-brand-red">
+                                <input type="radio" name="campus" value="TP. Hồ Chí Minh" checked class="accent-brand-red">
+                                <span class="text-xs font-medium text-gray-200">Cơ sở TP.HCM (Q.7)</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-3 rounded-xl bg-brand-bg border border-brand-border cursor-pointer hover:border-brand-red">
+                                <input type="radio" name="campus" value="Hà Nội" class="accent-brand-red">
+                                <span class="text-xs font-medium text-gray-200">Cơ sở Hà Nội (Cầu Giấy)</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-3 rounded-xl bg-brand-bg border border-brand-border cursor-pointer hover:border-brand-red">
+                                <input type="radio" name="campus" value="Online Trực Tuyến" class="accent-brand-red">
+                                <span class="text-xs font-medium text-gray-200">Học Online Trực Tuyến</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl bg-brand-red hover:bg-brand-redHover text-white font-extrabold text-base tracking-wide uppercase transition-all shadow-xl shadow-brand-red/30 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Gửi Đăng Ký Nhận Tư Vấn</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-gray-400 text-xs py-16 border-t border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10">
+            <!-- Col 1: Brand Info -->
+            <div class="space-y-4">
+                <a href="#" class="flex items-center gap-2">
+                    <div class="w-9 h-9 bg-brand-red rounded-lg flex items-center justify-center text-white">
+                        <i class="fa-solid fa-graduation-cap text-lg"></i>
+                    </div>
+                    <span class="text-xl font-black text-white uppercase tracking-tight">Edu<span class="text-brand-red">center</span></span>
+                </a>
+                <p class="text-gray-400 leading-relaxed">
+                    Trung tâm Đào tạo Công nghệ & Kỹ năng hàng đầu Việt Nam. Cam kết chất lượng đào tạo thực chiến và đồng hành phát triển sự nghiệp lâu dài.
+                </p>
+                <div class="flex items-center gap-3 pt-2">
+                    <a href="#" class="w-8 h-8 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-gray-300 hover:text-brand-red hover:border-brand-red transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-gray-300 hover:text-brand-red hover:border-brand-red transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-gray-300 hover:text-brand-red hover:border-brand-red transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-gray-300 hover:text-brand-red hover:border-brand-red transition-colors"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2: Quick Links -->
+            <div class="space-y-3">
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider">Khóa Học HOT</h4>
+                <ul class="space-y-2">
+                    <li><a href="#courses" class="hover:text-brand-red transition-colors">Lập Trình Fullstack Web</a></li>
+                    <li><a href="#courses" class="hover:text-brand-red transition-colors">Python & AI Engineering</a></li>
+                    <li><a href="#courses" class="hover:text-brand-red transition-colors">Data Analytics Professional</a></li>
+                    <li><a href="#courses" class="hover:text-brand-red transition-colors">UI/UX Product Design</a></li>
+                    <li><a href="#courses" class="hover:text-brand-red transition-colors">Digital Marketing Growth</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Campuses -->
+            <div class="space-y-3">
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider">Hệ Thống Cơ Sở</h4>
+                <div class="space-y-2">
+                    <p class="font-semibold text-gray-200"><i class="fa-solid fa-location-dot text-brand-red mr-1.5"></i> Cơ sở TP. Hồ Chí Minh:</p>
+                    <p class="text-gray-400 pl-5">254 Nguyễn Văn Linh, Phường Tân Thuận Tây, Quận 7, TP.HCM</p>
+                    <p class="font-semibold text-gray-200 pt-2"><i class="fa-solid fa-location-dot text-brand-red mr-1.5"></i> Cơ sở Hà Nội:</p>
+                    <p class="text-gray-400 pl-5">18 Phạm Hùng, Phường Mỹ Đình 2, Quận Cầu Giấy, Hà Nội</p>
+                </div>
+            </div>
+
+            <!-- Col 4: Newsletter -->
+            <div class="space-y-3">
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider">Đăng Ký Nhận Bản Tin</h4>
+                <p class="text-gray-400">Nhận thông tin lịch khai giảng & tài liệu lập trình miễn phí mỗi tuần.</p>
+                <form id="newsletter-form" class="space-y-2">
+                    <input type="email" required placeholder="Nhập email của bạn..." class="w-full px-3 py-2.5 rounded-lg bg-brand-surface border border-brand-border text-white text-xs focus:outline-none focus:border-brand-red">
+                    <button type="submit" class="w-full py-2.5 rounded-lg bg-brand-red hover:bg-brand-redDark text-white font-bold transition-colors">Đăng Ký</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-brand-border/60 text-center text-gray-500">
+            <p>© 2026 Educenter Academy. All rights reserved. Designed with Red & Black Modern Aesthetic.</p>
+        </div>
+    </footer>
+
+    <!-- COURSE DETAILS MODAL -->
+    <div id="course-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-brand-card border border-brand-border rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeCourseModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div id="modal-content">
+                <!-- Dynamically filled by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast-notification" class="fixed bottom-5 right-5 z-50 bg-brand-card border-2 border-brand-red text-white p-4 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-32 transition-transform duration-300 max-w-sm">
+        <div class="w-10 h-10 rounded-full bg-brand-red/20 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div>
+            <h5 id="toast-title" class="font-bold text-sm">Thành công!</h5>
+            <p id="toast-message" class="text-xs text-gray-300">Đã gửi thông tin tư vấn thành công.</p>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CORE -->
+    <script>
+        // Real-time Vietnam Clock
+        function updateClock() {
+            const now = new Date();
+            const options = { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const timeString = new Intl.DateTimeFormat('vi-VN', options).format(now);
+            document.getElementById('live-clock').innerText = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Filter Courses
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const courseCards = document.querySelectorAll('.course-card');
+        const searchInput = document.getElementById('course-search');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-red', 'text-white', 'active');
+                    b.classList.add('bg-brand-surface', 'text-gray-300');
+                });
+                btn.classList.add('bg-brand-red', 'text-white', 'active');
+                btn.classList.remove('bg-brand-surface', 'text-gray-300');
+
+                filterCourses();
+            });
+        });
+
+        searchInput.addEventListener('input', filterCourses);
+
+        function filterCourses() {
+            const activeCategory = document.querySelector('.filter-btn.active').getAttribute('data-category');
+            const query = searchInput.value.toLowerCase().trim();
+
+            courseCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const title = card.getAttribute('data-title').toLowerCase();
+
+                const matchesCategory = (activeCategory === 'all' || category === activeCategory);
+                const matchesSearch = title.includes(query);
+
+                if (matchesCategory && matchesSearch) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Pathway Switching
+        function switchPathway(pathId) {
+            document.querySelectorAll('.pathway-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.pathway-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-red', 'text-white');
+                btn.classList.add('bg-brand-surface', 'text-gray-300');
+            });
+
+            document.getElementById(pathId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + pathId);
+            activeBtn.classList.add('bg-brand-red', 'text-white');
+            activeBtn.classList.remove('bg-brand-surface', 'text-gray-300');
+        }
+
+        // Course Syllabus Modal Data
+        const courseDetailsMap = {
+            'fullstack': {
+                title: 'Lập Trình Fullstack Web Developer',
+                duration: '6 Tháng (144 Giờ học)',
+                price: '14.500.000đ',
+                syllabus: [
+                    'Tháng 1: HTML5, CSS3, Flexbox, Grid, Responsive Design & Tailwind CSS',
+                    'Tháng 2: JavaScript ES6+, DOM Manipulation, Async/Await & Git Flow',
+                    'Tháng 3: ReactJS, State Management (Redux/Zustand), Tailwind UI Components',
+                    'Tháng 4: Node.js, Express.js, RESTful API & Security Basics',
+                    'Tháng 5: Cơ sở dữ liệu MongoDB & PostgreSQL, ORM Prisma',
+                    'Tháng 6: Đồ án thực tế Fullstack E-Commerce / SaaS, CI/CD & Deploy Vercel/Render'
+                ]
+            },
+            'python': {
+                title: 'Python & AI Engineering',
+                duration: '5 Tháng (120 Giờ học)',
+                price: '15.900.000đ',
+                syllabus: [
+                    'Tháng 1: Lập trình Python cơ bản & Cấu trúc dữ liệu nâng cao',
+                    'Tháng 2: Phân tích dữ liệu với Pandas, NumPy & Data Visualization',
+                    'Tháng 3: Machine Learning căn bản (Scikit-Learn, Regression, Classification)',
+                    'Tháng 4: Deep Learning & Neural Networks với PyTorch',
+                    'Tháng 5: Tích hợp OpenAI APIs, LangChain, RAG Systems & Đồ án AI Application'
+                ]
+            },
+            'data': {
+                title: 'Data Analytics Professional',
+                duration: '4 Tháng (96 Giờ học)',
+                price: '12.000.000đ',
+                syllabus: [
+                    'Tháng 1: SQL căn bản đến nâng cao (JOINs, Subqueries, Window Functions)',
+                    'Tháng 2: Xử lý & Làm sạch dữ liệu với Excel & Power Query',
+                    'Tháng 3: Power BI Dashboard & Visual Storytelling chuyên nghiệp',
+                    'Tháng 4: Phân tích kinh doanh thực chiến & Báo cáo đồ án cuối khóa'
+                ]
+            },
+            'uiux': {
+                title: 'UI/UX Product Design Pro',
+                duration: '3.5 Tháng (84 Giờ học)',
+                price: '10.500.000đ',
+                syllabus: [
+                    'Mô-đun 1: Tư duy UX, User Research, Customer Journey Map',
+                    'Mô-đun 2: Figma Master Class, Auto Layout, Component Variants',
+                    'Mô-đun 3: Design System, Micro-interactions, Prototyping',
+                    'Mô-đun 4: Thiết kế Mobile App & Web Dashboard real-world case study'
+                ]
+            },
+            'mobile': {
+                title: 'Mobile App Flutter & React Native',
+                duration: '4.5 Tháng (110 Giờ học)',
+                price: '13.500.000đ',
+                syllabus: [
+                    'Mô-đun 1: Ngôn ngữ Dart / TypeScript & Cấu trúc UI Mobile',
+                    'Mô-đun 2: State Management (Provider, Bloc, Redux)',
+                    'Mô-đun 3: REST API, Firebase Auth & Push Notifications',
+                    'Mô-đun 4: Tối ưu hiệu năng, Build & Deploy App Store / Google Play'
+                ]
+            },
+            'marketing': {
+                title: 'Digital Marketing & Growth',
+                duration: '3 Tháng (72 Giờ học)',
+                price: '9.800.000đ',
+                syllabus: [
+                    'Mô-đun 1: Performance Marketing (Facebook Ads, Google Ads, TikTok Ads)',
+                    'Mô-đun 2: Chuẩn hóa SEO Website & Content Strategy',
+                    'Mô-đun 3: Tracking & Analytics (Google Analytics 4, Meta Pixel)',
+                    'Mô-đun 4: Growth Hacking & Tối ưu tỷ lệ chuyển đổi (CRO)'
+                ]
+            }
+        };
+
+        function openCourseModal(courseKey) {
+            const data = courseDetailsMap[courseKey];
+            if (!data) return;
+
+            const modalContent = document.getElementById('modal-content');
+            let syllabusHtml = data.syllabus.map(item => `
+                <li class="flex items-start gap-2.5 text-xs sm:text-sm text-gray-300">
+                    <i class="fa-solid fa-check text-brand-red mt-1"></i>
+                    <span>${item}</span>
+                </li>
+            `).join('');
+
+            modalContent.innerHTML = `
+                <span class="text-xs font-bold text-brand-red uppercase">Đề Cương Chi Tiết</span>
+                <h3 class="text-2xl font-black text-white mt-1 mb-2">${data.title}</h3>
+                <div class="flex items-center gap-4 text-xs text-gray-400 mb-6 border-b border-brand-border pb-4">
+                    <span><i class="fa-regular fa-clock text-brand-red mr-1"></i> ${data.duration}</span>
+                    <span><i class="fa-solid fa-tag text-brand-red mr-1"></i> ${data.price}</span>
+                </div>
+                
+                <h4 class="text-sm font-bold text-white mb-3 uppercase tracking-wider">Lộ Trình Học Chi Tiết:</h4>
+                <ul class="space-y-3 mb-6 bg-brand-surface p-4 rounded-xl border border-brand-border">
+                    ${syllabusHtml}
+                </ul>
+
+                <div class="flex justify-end gap-3 pt-2">
+                    <button onclick="closeCourseModal()" class="px-5 py-2.5 rounded-lg border border-brand-border text-xs font-bold text-gray-300 hover:bg-brand-border transition-colors">Đóng</button>
+                    <a href="#contact" onclick="closeCourseModal(); selectCourseForRegister('${data.title}');" class="px-5 py-2.5 rounded-lg bg-brand-red hover:bg-brand-redDark text-xs font-bold text-white transition-colors">Đăng Ký Khóa Học</a>
+                </div>
+            `;
+
+            document.getElementById('course-modal').classList.remove('hidden');
+        }
+
+        function closeCourseModal() {
+            document.getElementById('course-modal').classList.add('hidden');
+        }
+
+        function selectCourseForRegister(courseName) {
+            const courseSelect = document.getElementById('form-course-select');
+            if (courseSelect) {
+                courseSelect.value = courseName;
+            }
+        }
+
+        // Toast Notification System
+        function showToast(title, message) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-message').innerText = message;
+
+            toast.classList.remove('translate-y-32');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32');
+            }, 4000);
+        }
+
+        // Form Submission Validation
+        document.getElementById('main-consultation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fullname = document.getElementById('form-fullname').value.trim();
+            const phone = document.getElementById('form-phone').value.trim();
+            const email = document.getElementById('form-email').value.trim();
+
+            const phoneRegex = /^0\d{9}$/;
+            if (!phoneRegex.test(phone)) {
+                showToast('Lỗi nhập liệu', 'Vui lòng nhập số điện thoại hợp lệ (10 chữ số bắt đầu bằng 0).');
+                return;
+            }
+
+            showToast('Đăng Ký Thành Công!', `Cảm ơn ${fullname}. Educenter sẽ liên hệ tư vấn qua SĐT ${phone} trong thời gian sớm nhất.`);
+            this.reset();
+        });
+
+        document.getElementById('hero-quick-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('quick-name').value.trim();
+            const phone = document.getElementById('quick-phone').value.trim();
+
+            const phoneRegex = /^0\d{9}$/;
+            if (!phoneRegex.test(phone)) {
+                showToast('Lỗi nhập liệu', 'Vui lòng nhập số điện thoại hợp lệ (10 chữ số).');
+                return;
+            }
+
+            showToast('Đã Nhận Thông Tin!', `Cảm ơn ${name}. Chuyên viên Educenter sẽ gọi cho bạn ngay.`);
+            this.reset();
+        });
+
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Đăng Ký Mới', 'Cảm ơn bạn đã đăng ký nhận bản tin công nghệ của Educenter!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
